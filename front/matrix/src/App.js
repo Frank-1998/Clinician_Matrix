@@ -17,7 +17,16 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Login
+        </a>
+        <a
+          className="App-link"
+          //href="https://reactjs.org"
+          href="/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Signup
         </a>
       </header>
     </div>
