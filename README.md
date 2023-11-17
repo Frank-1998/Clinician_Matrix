@@ -2,4 +2,4 @@
 
 ## Authors:
 Frank Li
-Anshul Verma
+\nAnshul Verma
