@@ -8,7 +8,12 @@ const Buttons = ({ label }) => {
   };
 
   return (
-    <Button style={buttonStyle} disabled={false} variant="contained">
+    <Button 
+    style={buttonStyle} 
+    disabled={false} 
+    variant="contained"
+    onMouseEnter={(e) => (e.target.style.backgroundColor = '#b71c1c')}
+    onMouseLeave={(e) => (e.target.style.backgroundColor = buttonStyle.backgroundColor)}>
       {label}
     </Button>
   );
