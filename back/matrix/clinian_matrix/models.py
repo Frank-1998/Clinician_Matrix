@@ -30,6 +30,7 @@ class Patients(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255, null=False, blank=False)
     is_stable = models.BooleanField(default=False, blank=False) # if patient is stable
+    skills_needed = models.ManyToManyField(Skills, related_name='skills_needed', blank=True)
     def __str__(self) -> str:
         return self.name
 class NurseProfile(models.Model):
