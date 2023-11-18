@@ -40,6 +40,14 @@ INSTALLED_APPS = [
     # for app
     'clinian_matrix',
     'rest_framework',
+    'rest_framework.authtoken',
+    'authentication.apps.AuthenticationConfig',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+
 ]
 
 MIDDLEWARE = [
@@ -127,3 +135,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # for my app
 AUTH_USER_MODEL = 'clinian_matrix.CustomUser'
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+SITE_ID = 1  # make sure SITE_ID is set

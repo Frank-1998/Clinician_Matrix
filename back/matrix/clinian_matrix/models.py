@@ -2,16 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.utils.translation import gettext_lazy as _
-from .managers import CustomUserManager
+
+
 class CustomUser(AbstractUser):
-    username = models.CharField(max_length=255, null=False, blank=False, default="") 
-    email = models.EmailField(_("email address"), unique=True)
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
     is_nurse = models.BooleanField(default=False)
-    objects = CustomUserManager()
     def __str__(self) -> str:
-        return self.email
+        return self.username
 
 class Skills(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -36,7 +32,6 @@ class Patients(models.Model):
     is_stable = models.BooleanField(default=False, blank=False) # if patient is stable
     def __str__(self) -> str:
         return self.name
-
 class NurseProfile(models.Model):
     # options for gender
     options = (

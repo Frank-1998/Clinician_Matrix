@@ -20,4 +20,5 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('clinian_matrix.urls')),
+    path('api/auth/', include('authentication.urls')),
 ]
