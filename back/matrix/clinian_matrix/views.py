@@ -16,3 +16,15 @@ class ManagerViewSet(viewsets.ModelViewSet):
 class SkillViewSet(viewsets.ModelViewSet):
     queryset = Skills.objects.all()
     serializer_class = SkillsSerializer
+
+class PatientsViewSet(viewsets.ModelViewSet):
+    queryset = Patients.objects.all()
+    serializer_class = PatientSerializer
+
+class CertificateViewSet(viewsets.ModelViewSet):
+    queryset = Certificate.objects.all()
+    serializer_class = CertificateSerializer
+
+class CustomUserViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer

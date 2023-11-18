@@ -24,6 +24,19 @@ class Skills(models.Model):
     def __str__(self) -> str:
         return self.name 
 
+class Certificate(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    def __str__(self) -> str:
+        return self.name
+
+class Patients(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    is_stable = models.BooleanField(default=False, blank=False) # if patient is stable
+    def __str__(self) -> str:
+        return self.name
+
 class NurseProfile(models.Model):
     # options for gender
     options = (
@@ -31,6 +44,7 @@ class NurseProfile(models.Model):
         ('female', 'Female'),
         ('others', 'Others')
     )
+    is_jr = models.BooleanField(default=False, blank=True) # if nurse is Junior
     name = models.CharField(max_length=255, blank=False, null=False, default="name")
     user = models.OneToOneField(CustomUser, related_name='nurse_profile', on_delete=models.CASCADE)
     gender = models.CharField(
@@ -46,7 +60,7 @@ class NurseProfile(models.Model):
     levle3 = models.ManyToManyField(Skills, related_name='levle3_skills', blank=True)
     levle4 = models.ManyToManyField(Skills, related_name='levle4_skills', blank=True)
     levle5 = models.ManyToManyField(Skills, related_name='levle5_skills', blank=True)
-
+    certificate = models.ManyToManyField(Certificate, related_name='certificate', blank=True)
 
     def __str__(self) -> str:
         return self.name
@@ -70,16 +84,3 @@ class ManagerProfile(models.Model):
 
     def __str__(self) -> str:
         return self.user.username
-
-    
-class Patients(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255, null=False, blank=False)
-    def __str__(self) -> str:
-        return self.name
-    
-class Certificate(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255, null=False, blank=False)
-    def __str__(self) -> str:
-        return self.name
