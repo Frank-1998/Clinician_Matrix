@@ -4,7 +4,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 
-const PasswordTextField = ({ label, icon }) => {
+const PasswordTextField = ({ label, icon, onChange, name }) => {
   const iconStyle = {
     color: 'white', // Text color
   };
@@ -15,8 +15,9 @@ const PasswordTextField = ({ label, icon }) => {
 
   return (
     <TextField
+      name={name}
+      onChange={onChange}
       style={textStyle}
-      id="filled-basic"
       variant="filled"
       fullWidth
       type="password"  // Set type to 'password'

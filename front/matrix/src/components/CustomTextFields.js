@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 
-const CustomTextFields = ({ label, icon }) => {
+const CustomTextFields = ({ label, icon, onChange, name }) => {
   const iconStyle = {
     color: 'white', // Text color
   };
@@ -13,8 +13,9 @@ const CustomTextFields = ({ label, icon }) => {
 
   return (
     <TextField
+      name={name}
+      onChange={onChange}
       style={textStyle}
-      id="filled-basic"
       variant="filled"
       fullWidth
       InputProps={{

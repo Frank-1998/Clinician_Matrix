@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    'corsheaders',
 
 ]
 
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'matrix.urls'
@@ -138,6 +140,10 @@ AUTH_USER_MODEL = 'clinian_matrix.CustomUser'
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
-    ]
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        'rest_framework.permissions.AllowAny'
+    ],
 }
 SITE_ID = 1  # make sure SITE_ID is set
+CORS_ORIGIN_ALLOW_ALL = True
