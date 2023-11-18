@@ -25,8 +25,3 @@ class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
         fields = '__all__'
-
-class MatchSkillSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MatchSkills
-        fields = '__all__'

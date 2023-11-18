@@ -1,6 +1,28 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 import uuid
+from django.utils.translation import gettext_lazy as _
+from .managers import CustomUserManager
+class CustomUser(AbstractUser):
+    username = models.CharField(max_length=255, null=False, blank=False, default="") 
+    email = models.EmailField(_("email address"), unique=True)
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+    is_nurse = models.BooleanField(default=False)
+    objects = CustomUserManager()
+    def __str__(self) -> str:
+        return self.email
+
+class Skills(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=255, null=False, blank=False)
+    class Difficiulties(models.IntegerChoices):
+        LEVEL1 = 1
+        LEVEL2 = 2
+        LEVEL3 = 3
+    difficiulty = models.IntegerField(default=1, choices=Difficiulties.choices, blank=False, null=False)
+    def __str__(self) -> str:
+        return self.name 
 
 class NurseProfile(models.Model):
     # options for gender
@@ -9,7 +31,8 @@ class NurseProfile(models.Model):
         ('female', 'Female'),
         ('others', 'Others')
     )
-    user = models.OneToOneField(User, related_name='nurse_profile', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, blank=False, null=False, default="name")
+    user = models.OneToOneField(CustomUser, related_name='nurse_profile', on_delete=models.CASCADE)
     gender = models.CharField(
         max_length=20,
         choices=options,
@@ -18,8 +41,15 @@ class NurseProfile(models.Model):
         blank=False
     )
 
+    level1 = models.ManyToManyField(Skills, related_name='level1_skills', blank=True)
+    level2 = models.ManyToManyField(Skills, related_name='level2_skills', blank=True)
+    levle3 = models.ManyToManyField(Skills, related_name='levle3_skills', blank=True)
+    levle4 = models.ManyToManyField(Skills, related_name='levle4_skills', blank=True)
+    levle5 = models.ManyToManyField(Skills, related_name='levle5_skills', blank=True)
+
+
     def __str__(self) -> str:
-        return self.user.username
+        return self.name
 
 class ManagerProfile(models.Model):
     # options for gender
@@ -28,7 +58,8 @@ class ManagerProfile(models.Model):
         ('female', 'Female'),
         ('others', 'Others')
     )
-    user = models.OneToOneField(User, related_name='manager_profile', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, blank=False, null=False, default="name")
+    user = models.OneToOneField(CustomUser, related_name='manager_profile', on_delete=models.CASCADE)
     gender = models.CharField(
         max_length=20,
         choices=options,
@@ -40,12 +71,6 @@ class ManagerProfile(models.Model):
     def __str__(self) -> str:
         return self.user.username
 
-class Skills(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255, null=False, blank=False)
-
-    def __str__(self) -> str:
-        return self.name 
     
 class Patients(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -58,12 +83,3 @@ class Certificate(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
     def __str__(self) -> str:
         return self.name
-    
-class MatchSkills(models.Model):
-    nurse = models.OneToOneField(NurseProfile, on_delete=models.CASCADE, primary_key=True)
-    level1 = models.ManyToManyField(Skills, related_name='level1_skills', blank=True)
-    level2 = models.ManyToManyField(Skills, related_name='level2_skills', blank=True)
-    level3 = models.ManyToManyField(Skills, related_name='level3_skills', blank=True)
-    certificate = models.ManyToManyField(Certificate, related_name='certificates', blank=True)
-    def __str__(self) -> str:
-        return self.nurse.user.username

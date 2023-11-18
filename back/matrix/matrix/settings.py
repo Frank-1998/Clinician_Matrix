@@ -126,3 +126,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # for my app
+AUTH_USER_MODEL = 'clinian_matrix.CustomUser'
