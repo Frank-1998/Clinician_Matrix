@@ -5,6 +5,7 @@ import PasswordTextField from '../components/PasswordTextField';
 import  "./SignupPage.css";
 import AccountBoxRoundedIcon from '@mui/icons-material/AccountBoxRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 
 function SignupPage() {
     return (
@@ -14,6 +15,9 @@ function SignupPage() {
           <div className="text_input">
             <CustomTextFields label="Create Username" icon={<AccountBoxRoundedIcon/>}></CustomTextFields>
             {/* <Input defaultValue="Hello world" inputProps={ariaLabel} /> */}
+          </div>
+          <div className="text_input">
+            <CustomTextFields label="Email" icon={<EmailRoundedIcon/>}></CustomTextFields>
           </div>
           <div className="text_input">
             <PasswordTextField label="Create Password" icon={<LockRoundedIcon/>}></PasswordTextField>
