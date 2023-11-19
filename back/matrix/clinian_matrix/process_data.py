@@ -36,8 +36,5 @@ def process(patients, nurses, skills):
                 nurse_result.append(5)
         nurse_value = [is_sr, nurse_result]
         NURSES[nurse_name]=nurse_value
-        print(SKILLS)
-        print(PATIENTS)
-        print(NURSES)
     return SKILLS, PATIENTS, NURSES
 

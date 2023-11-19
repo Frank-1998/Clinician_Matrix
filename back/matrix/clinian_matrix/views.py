@@ -41,5 +41,5 @@ class NurseAssignmentView(APIView):
     nurses_serializer = NurseProfileSerializer(nurses, many=True).data
     skill_serializer = SkillsSerializer(skills, many=True).data
     def get(self, request):
-        process(self.patients_serializer, self.nurses_serializer, self.skills)
+        skills, patients, nurses = process(self.patients_serializer, self.nurses_serializer, self.skills)
         return Response({'message': "hi"})
