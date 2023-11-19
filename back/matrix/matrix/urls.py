@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+from clinian_matrix.views import NurseAssignmentView 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('clinian_matrix.urls')),
     path('api/auth/', include('authentication.urls')),
+    path('api/assign/', NurseAssignmentView.as_view(), name='assign'),
 ]
