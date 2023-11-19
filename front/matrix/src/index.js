@@ -7,11 +7,13 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import PatientDashboardPage from './pages/PatientDashboard';
 import SkillsPage from './pages/SkillsPage';
+import NurseProfile from './pages/NurseProfile';
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import ManagerProfile from './pages/ManagerProfile';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
   {
     path: "skills",
     element: <SkillsPage/>,
+  },
+  {
+    path: "mprofile",
+    element: <ManagerProfile/>,
+  },
+  {
+    path: "nprofile",
+    element: <NurseProfile/>,
   },
 ]);
 

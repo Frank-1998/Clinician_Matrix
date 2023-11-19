@@ -45,6 +45,22 @@ function App() {
         >
           Skills
         </a>
+        <a
+          className="App-link"
+          href="/mprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Manager Profile
+        </a>
+        <a
+          className="App-link"
+          href="/nprofile"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Nurse Profile
+        </a>
       </header>
     </div>
   );

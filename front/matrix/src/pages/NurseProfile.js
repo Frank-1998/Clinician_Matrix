@@ -3,9 +3,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import CustomTextField from '../components/CustomTextFields';
 import Buttons from '../components/Buttons';
-import './ManagerProfile.css';
+import './NurseProfile.css';
 
-function ManagerProfile() {
+function NurseProfile() {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -37,8 +37,8 @@ function ManagerProfile() {
   };
 
   return (
-    <div className="manager-profile-section">
-      <h4>Manager Profile</h4>
+    <div className="nurse-profile-section">
+      <h4>Nurse Profile</h4>
       <form onSubmit={handleSubmit}>
         <div className="text_input">
           <CustomTextField
@@ -63,9 +63,9 @@ function ManagerProfile() {
         </div>
         <div className="text_input">
           <CustomTextField
-            name="years_of_managing"
+            name="years_of_nursing"
             onChange={handleChange}
-            label="Years of Managing"
+            label="Years of Nursing"
           />
         </div>
         <div className="text_input">
@@ -93,4 +93,4 @@ function ManagerProfile() {
   );
 }
 
-export default ManagerProfile;
+export default NurseProfile;
