@@ -31,6 +31,14 @@ function App() {
         <a
           className="App-link"
           //href="https://reactjs.org"
+          href="/dashboard"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Patient Dashboard
+        </a>
+        <a
+          className="App-link"
           href="/skills"
           target="_blank"
           rel="noopener noreferrer"
