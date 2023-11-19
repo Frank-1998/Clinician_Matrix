@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from '../components/Dropdown';
+import Buttons from '../components/Buttons';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -101,6 +102,10 @@ function SkillsPage() {
             </TableBody>
             </Table>
             </TableContainer>
+        </div>
+
+        <div>
+          <Buttons label="Save" type="submit"></Buttons>
         </div>
   
       </div>
