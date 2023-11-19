@@ -129,7 +129,7 @@ def assign():
     # Run the algorithm
     assignments, unassigned_complex_patients = assign_nurses_to_complex_patients(patient_data, senior_nurses, junior_nurses)
     assignments, unassigned_non_complex_patients = assign_remaining_non_complex_patients(patient_data, assignments, senior_nurses, junior_nurses)
-    '''
+    
     # Display the assignments
     for nurse_id, assigned_patients in assignments.items():
         print(f"Nurse {nurse_id} assigned to patients: {', '.join(assigned_patients)}")
@@ -145,7 +145,7 @@ def assign():
     for patient_id, required_skills_indices in unassigned_non_complex_patients.items():
         required_skills = [SKILLS[i] for i in required_skills_indices if 18 <= i < 30] # only level 3 skills are considered
         print(f"Patient {patient_id} required skill(s): {', '.join(required_skills)}")
-    '''
+
     # Combine the required skillsets for suggested training plan
     suggested_training_plan = set()
     for patient_id, required_skills_indices in unassigned_complex_patients.items():
@@ -157,14 +157,14 @@ def assign():
     #print("\nSuggested Training Plan:")
     nurses_to_be_trained = {}
     for skill_index in suggested_training_plan:
-        #print(f"skill: {SKILLS[skill_index]}")
+        print(f"skill: {SKILLS[skill_index]}")
         for nurse_id, skill_ratings in senior_nurses.items():
             if skill_ratings[skill_index] < 3:
-                #print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
                 nurses_to_be_trained.setdefault(nurse_id, []).append(SKILLS[skill_index])
         for nurse_id, skill_ratings in junior_nurses.items():
             if skill_ratings[skill_index] < 3:
-                #print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
                 nurses_to_be_trained.setdefault(nurse_id, []).append(SKILLS[skill_index])
 
     return assignments, unassigned_complex_patients, unassigned_non_complex_patients, nurses_to_be_trained
