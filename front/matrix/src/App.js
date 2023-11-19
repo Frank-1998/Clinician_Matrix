@@ -3,11 +3,18 @@ import Buttons from './components/Buttons';
 import './App.css';
 import PersonAddAltRoundedIcon from '@mui/icons-material/PersonAddAltRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NurseProfile from './pages/NurseProfile';
+import SkillsPage from './pages/SkillsPage';
+import PatientDashboard from './pages/PatientDashboard';
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="main">
       <header className="App-header">
+      <Navbar></Navbar>
       <div className="landing-page-section">
       <img src={logo} className="App-logo" alt="logo" />
       <h2>Welcome!</h2>
