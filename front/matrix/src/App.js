@@ -28,6 +28,15 @@ function App() {
         >
           Signup
         </a>
+        <a
+          className="App-link"
+          //href="https://reactjs.org"
+          href="/skills"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Skills
+        </a>
       </header>
     </div>
   );
