@@ -22,15 +22,15 @@ function App() {
         <div className="flex-container">
           <h4>Getting Started?</h4>
           <div style={{ marginBottom: '10px' }}>
-            <Buttons label="Signup As Nurse" icon={<PersonAddAltRoundedIcon />} />
-            <Buttons label="Signup As Manager" icon={<PersonAddAltRoundedIcon />} />
+            <Buttons label="Signup As Nurse" icon={<PersonAddAltRoundedIcon />} pageLink={"/signup"}/>
+            <Buttons label="Signup As Manager" icon={<PersonAddAltRoundedIcon /> } pageLink={"/signup"}/>
           </div>
         </div>
         <div className="flex-container">
           <h4>Returning User?</h4>
           <div style={{ marginBottom: '10px' }}>
-            <Buttons label="Login As Nurse" icon={<AccountCircleRoundedIcon />} />
-            <Buttons label="Login As Manager" icon={<AccountCircleRoundedIcon />} />
+            <Buttons label="Login As Nurse" icon={<AccountCircleRoundedIcon />} pageLink={"/login"}/>
+            <Buttons label="Login As Manager" icon={<AccountCircleRoundedIcon />} pageLink={"/login"} />
           </div>
         </div>
       </div>

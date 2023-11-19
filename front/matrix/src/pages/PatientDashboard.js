@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import "./PatientDashboardPage.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 // let data = ['Skill Name 1', 'Skill Name 2', 'Skill Name 3', 'Skill Name 4', "Skill Name 5"];
 function createData(patientName, nurseAvailable) {
@@ -88,6 +89,7 @@ function PatientDashboardPage() {
 
   return (
     <div className="patient-dashboard-section">
+      <Navbar></Navbar>
       <h2>Patient Assignment Dashboard</h2>
 
       <div className="patient-dashboard-section" class="flex-container">
