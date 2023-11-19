@@ -3,3 +3,7 @@
 ## Authors:
 Frank Li<br />
 Anshul Verma
+
+Lubaba Sheikh
+
+Alma Soria
