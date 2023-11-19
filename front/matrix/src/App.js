@@ -28,6 +28,15 @@ function App() {
         >
           Signup
         </a>
+        <a
+          className="App-link"
+          //href="https://reactjs.org"
+          href="/dashboard"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Patient Dashboard
+        </a>
       </header>
     </div>
   );
