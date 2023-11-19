@@ -23,7 +23,7 @@ function SkillsPage() {
         <div className="text_input">
           <h3>Level 1 Skills</h3>
             <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ minWidth: 650, background: '#13143c' }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="center">Skill Name</TableCell>
@@ -34,7 +34,7 @@ function SkillsPage() {
               {items.map((item) => (
                 <TableRow
                   key={item}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  sx={{ '&:last-child td, &:last-child th': { border: 0, background: '#13143c'} }}>
                   <TableCell component="th" scope="row" align="center">
                     {item}
                   </TableCell>
@@ -51,7 +51,7 @@ function SkillsPage() {
         <div className="text_input">
           <h3>Level 2 Skills</h3>
             <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{minWidth: 650, background: '#13143c'}} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="center">Skill Name</TableCell>
@@ -62,7 +62,7 @@ function SkillsPage() {
               {items.map((item) => (
                 <TableRow
                   key={item}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  sx={{ '&:last-child td, &:last-child th': { border: 0, background: '#13143c'} }}>
                   <TableCell component="th" scope="row" align="center">
                     {item}
                   </TableCell>
@@ -79,7 +79,7 @@ function SkillsPage() {
         <div className="text_input">
           <h3>Level 3 Skills</h3>
             <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ minWidth: 650, background: '#13143c' }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="center">Skill Name</TableCell>
@@ -90,7 +90,7 @@ function SkillsPage() {
               {items.map((item) => (
                 <TableRow
                   key={item}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  sx={{ '&:last-child td, &:last-child th': { border: 0, background: '#13143c'} }}>
                   <TableCell component="th" scope="row" align="center">
                     {item}
                   </TableCell>
