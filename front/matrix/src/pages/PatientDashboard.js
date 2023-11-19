@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import  "./PatientDashboardPage.css";
+import Navbar from '../components/Navbar';
+
 
 
 // let data = ['Skill Name 1', 'Skill Name 2', 'Skill Name 3', 'Skill Name 4', "Skill Name 5"];
@@ -25,6 +27,7 @@ const rows = [
 function PatientDashboardPage() {
   return (
     <div className="patient-dashboard-section">
+      <Navbar></Navbar>
       <h2>Patient Assignment Dashboard</h2>
 
       <div className="patient-dashboard-section" class='flex-container'>
