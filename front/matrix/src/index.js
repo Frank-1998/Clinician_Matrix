@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import PatientDashboardPage from './pages/PatientDashboard';
+import SkillsPage from './pages/SkillsPage';
 
 import {
   createBrowserRouter,
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <PatientDashboardPage/>,
+  },
+  {
+    path: "skills",
+    element: <SkillsPage/>,
   },
 ]);
 

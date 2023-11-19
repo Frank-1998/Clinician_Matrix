@@ -37,6 +37,14 @@ function App() {
         >
           Patient Dashboard
         </a>
+        <a
+          className="App-link"
+          href="/skills"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Skills
+        </a>
       </header>
     </div>
   );

@@ -2,11 +2,22 @@ from rest_framework import viewsets, permissions
 from . permissions import IsOwnerOrReadOnly
 from .serializers import *
 from .models import *
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .process_data import *
 # Create your views here.
 class NurseViewSet(viewsets.ModelViewSet):
     queryset = NurseProfile.objects.all()
     serializer_class = NurseProfileSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly] 
+
+    def get_queryset(self):
+        query_params = self.request.query_params
+        if not query_params:
+            return self.queryset
+        print(query_params['user'])
+        return self.queryset.filter(user=query_params['user'])
 
 class ManagerViewSet(viewsets.ModelViewSet):
     queryset = ManagerProfile.objects.all()
@@ -28,3 +39,15 @@ class CertificateViewSet(viewsets.ModelViewSet):
 class CustomUserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+class NurseAssignmentView(APIView):
+    patients = Patients.objects.all()
+    nurses = NurseProfile.objects.all()
+    skills = Skills.objects.all()
+    patients_serializer = PatientSerializer(patients, many=True).data
+    nurses_serializer = NurseProfileSerializer(nurses, many=True).data
+    skill_serializer = SkillsSerializer(skills, many=True).data
+    def get(self, request):
+        skills, patients, jr_nurses, sr_nurses = process(self.patients_serializer, self.nurses_serializer, self.skills)
+        assign(sr_nurses, jr_nurses, patients)
+        return Response({'message': "hi"})
