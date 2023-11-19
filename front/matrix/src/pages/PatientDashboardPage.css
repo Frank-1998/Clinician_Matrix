@@ -1,7 +1,7 @@
 body{
     /* background: linear-gradient(135deg, #1B8AF1, #B58DED); */
     /* background: radial-gradient(circle, #4a148c, #6a1b9a, #311b92); */
-    background: #0A0101;
+    background: #8CD4EA;
     height: 100vh;
     width: 100%;
     text-align: center;
@@ -33,7 +33,7 @@ form{
 
 .patient-dashboard-section{
     display: inline-block;
-    background: #2A0202;
+    background: #13143c;
     width: 90%;
     height: 100%;
     margin-top: 3%;
