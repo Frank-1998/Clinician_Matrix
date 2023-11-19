@@ -41,5 +41,13 @@ class NurseAssignmentView(APIView):
     nurses_serializer = NurseProfileSerializer(nurses, many=True).data
     skill_serializer = SkillsSerializer(skills, many=True).data
     def get(self, request):
-        skills, patients, nurses = process(self.patients_serializer, self.nurses_serializer, self.skills)
+        skills, patients, jr_nurses, sr_nurses = process(self.patients_serializer, self.nurses_serializer, self.skills)
+        print(skills)
+        print(patients)
+        print(jr_nurses)
+        print(sr_nurses)
+        assign(sr_nurses, jr_nurses, patients)
+        index1 = skills.index('Documentation Electronic Health Record(EHR)')
+        index2 = skills.index('Taking Vital Signs')
+        print(index1, index2)
         return Response({'message': "hi"})
