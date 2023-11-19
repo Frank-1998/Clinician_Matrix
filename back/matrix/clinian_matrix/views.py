@@ -12,6 +12,13 @@ class NurseViewSet(viewsets.ModelViewSet):
     serializer_class = NurseProfileSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly] 
 
+    def get_queryset(self):
+        query_params = self.request.query_params
+        if not query_params:
+            return self.queryset
+        print(query_params['user'])
+        return self.queryset.filter(user=query_params['user'])
+
 class ManagerViewSet(viewsets.ModelViewSet):
     queryset = ManagerProfile.objects.all()
     serializer_class = ManagerProfileSerializer
@@ -42,12 +49,5 @@ class NurseAssignmentView(APIView):
     skill_serializer = SkillsSerializer(skills, many=True).data
     def get(self, request):
         skills, patients, jr_nurses, sr_nurses = process(self.patients_serializer, self.nurses_serializer, self.skills)
-        print(skills)
-        print(patients)
-        print(jr_nurses)
-        print(sr_nurses)
         assign(sr_nurses, jr_nurses, patients)
-        index1 = skills.index('Documentation Electronic Health Record(EHR)')
-        index2 = skills.index('Taking Vital Signs')
-        print(index1, index2)
         return Response({'message': "hi"})
