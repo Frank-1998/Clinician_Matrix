@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import CustomTextField from '../components/CustomTextFields';
 import Buttons from '../components/Buttons';
 import './NurseProfile.css';
+import Navbar from '../components/Navbar';
 
 function NurseProfile() {
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ function NurseProfile() {
 
   return (
     <div className="nurse-profile-section">
+      <Navbar></Navbar>
       <h4>Nurse Profile</h4>
       <form onSubmit={handleSubmit}>
         <div className="text_input">

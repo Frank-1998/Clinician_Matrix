@@ -9,13 +9,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import  "./SkillsPage.css";
-
+import Navbar from '../components/Navbar';
 
 let items = ['Skill Name 1', 'Skill Name 2', 'Skill Name 3', 'Skill Name 4', "Skill Name 5"];
 
 function SkillsPage() {
   return (
     <div className="skills-section">
+      <Navbar></Navbar>
       <h2>Skills and Ratings</h2>
 
       <div className="skills-section" class='flex-container'>

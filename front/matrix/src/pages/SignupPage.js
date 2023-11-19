@@ -26,7 +26,7 @@ function SignupPage() {
             <PasswordTextField label="Confirm Password" icon={<LockRoundedIcon/>}></PasswordTextField>
           </div>
           <div>
-            <Buttons label="Create Account"></Buttons>
+            <Buttons label="Create Account" pageLink={"/nprofile"}></Buttons>
           </div>
         </form>
       </div>
