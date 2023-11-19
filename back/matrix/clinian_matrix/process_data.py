@@ -103,7 +103,7 @@ def assign_remaining_non_complex_patients(patient_data, assignments, senior_nurs
 
     return assignments, unassigned_non_complex_patients
 
-def assign(sr_nurse, jr_nurse, patients):
+def assign(sr_nurses, jr_nurses, patients):
     '''
     nurse_file_path = 'nurse_data_D.json'
     with open(nurse_file_path, 'r') as file:
@@ -118,14 +118,14 @@ def assign(sr_nurse, jr_nurse, patients):
     }
     '''
     #senior_nurses = {nurse_id: skill_ratings for nurse_id, (is_senior, skill_ratings) in nurse_data.items() if is_senior == 1}
-    senior_nurses = sr_nurse    #junior_nurses = {nurse_id: skill_ratings for nurse_id, (is_senior, skill_ratings) in nurse_data.items() if is_senior == 0}
-    junior_nurses = jr_nurse 
-    patient_data = patients
+    senior_nurses = sr_nurses#junior_nurses = {nurse_id: skill_ratings for nurse_id, (is_senior, skill_ratings) in nurse_data.items() if is_senior == 0}
+    junior_nurses = jr_nurses 
+    patient_data = patients 
 
     # Run the algorithm
     assignments, unassigned_complex_patients = assign_nurses_to_complex_patients(patient_data, senior_nurses, junior_nurses)
     assignments, unassigned_non_complex_patients = assign_remaining_non_complex_patients(patient_data, assignments, senior_nurses, junior_nurses)
-
+    '''
     # Display the assignments
     for nurse_id, assigned_patients in assignments.items():
         print(f"Nurse {nurse_id} assigned to patients: {', '.join(assigned_patients)}")
@@ -141,7 +141,7 @@ def assign(sr_nurse, jr_nurse, patients):
     for patient_id, required_skills_indices in unassigned_non_complex_patients.items():
         required_skills = [SKILLS[i] for i in required_skills_indices if 18 <= i < 30] # only level 3 skills are considered
         print(f"Patient {patient_id} required skill(s): {', '.join(required_skills)}")
-
+    '''
     # Combine the required skillsets for suggested training plan
     suggested_training_plan = set()
     for patient_id, required_skills_indices in unassigned_complex_patients.items():
@@ -150,12 +150,17 @@ def assign(sr_nurse, jr_nurse, patients):
     for patient_id, required_skills_indices in unassigned_non_complex_patients.items():
         suggested_training_plan.update(required_skills_indices)
 
-    print("\nSuggested Training Plan:")
+    #print("\nSuggested Training Plan:")
+    nurses_to_be_trained = {}
     for skill_index in suggested_training_plan:
         #print(f"skill: {SKILLS[skill_index]}")
         for nurse_id, skill_ratings in senior_nurses.items():
             if skill_ratings[skill_index] < 3:
-                print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                #print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                nurses_to_be_trained.setdefault(nurse_id, []).append(SKILLS[skill_index])
         for nurse_id, skill_ratings in junior_nurses.items():
             if skill_ratings[skill_index] < 3:
-                print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                #print(f"Train nurse {nurse_id} in skill: {SKILLS[skill_index]}")
+                nurses_to_be_trained.setdefault(nurse_id, []).append(SKILLS[skill_index])
+
+    return assignments, unassigned_complex_patients, unassigned_non_complex_patients, nurses_to_be_trained
